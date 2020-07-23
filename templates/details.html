@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block title %}Hustle: {{ object.hustle_name }} {% endblock %}
+{% block content %}
+
+
+<div class="container" xmlns="http://www.w3.org/1999/html">
+  <div class="row">
+    <div class="col-md-8 card mb-4  mt-3 left  top">
+      <div class="card-body">
+          {% if object.verified %}
+        <h3>{{ object.hustle_name }}  <img src="{% static 'images/verified.png' %}" width="5%"></h3>
+          {% else %}
+          <h1>{{ object.hustle_name }}</h1>
+          {% endif %}
+          <a href="{% url 'profile' object.user.username %}"><p class=" text-muted">@{{ object.user.username }}</a> | {{ object.updated_on | timesince }} | <a href="{{object.category.get_absolute_url}}">{{object.category}}</a> | Travel: {{object.travel_availability}} | <img width="30px" src="{% static 'images/message.png' %}"></p>
+        <p class="card-text ">{{ object.content | safe }}</p>
+        <div class="row gallery">
+            {% for p in object.media.all %}
+            <div class="col-md-3">
+                <a href="{{p.file.url}}"><small>{{p.file.url}}</small></a>
+            </div>
+            {% endfor %}
+        </div>
+          <br>
+           {% if user.is_authenticated %}
+      {% if user.id == object.user.id %}
+          <div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Settings
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <a class="dropdown-item" href="{% url 'update' object.slug %}">Update</a>
+    <a class="dropdown-item" href="{% url 'delete' object.slug %}">Delete</a>
+  </div>
+</div>
+      {% endif %}
+      {% endif %}
+       </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+    <p class="text-muted">Comment</p>
+  <div class="form-group row">
+    <div class="col-md-8 mb-2 left  top">
+      <form method="POST" class="myForm" action=".">
+        {% csrf_token %}
+         {{form | crispy}}
+         <div class="btn">
+             {% if user.is_authenticated %}
+             <button class="btn btn-sm btn-outline-primary" type="submit">Post</button>
+             {% else %}
+                 <button class="btn btn-sm btn-outline-primary" type="submit" disabled>Post</button>
+                 {% endif %}
+         </div>
+      </form>
+        <hr>
+    </div>
+    </div>
+
+
+<div class="main-comment-section">
+<div class="col-md-7">
+    {% with comments.count as total_comments %}
+    <h4> Comments({{total_comments}})</h4>
+    {% endwith %}
+    {% load comments %}
+    {% load mptt_tags %}
+    <div>
+        {% recursetree comments %}
+        <div class="mt-2" id="{{node.id}}">{{node.comment}}</div><br>
+        <button class="btn btn-sm btn-outline-primary" onclick="myFunction({{node.id}})">Reply</button>
+
+        {% if not node.is_leaf_node %}
+        <div class="children pl-2 pl-md-5">
+            {{children}}
+        </div>
+        {% endif %}
+        {% endrecursetree %}
+    </div>
+    </div>
+</div>
+  </div>
+<!--{% include 'comment.html' %}-->
+
+<script>
+    function myFunction(id) {
+      var a = document.getElementById(id);
+      a.insertAdjacentHTML('afterend',
+      '<form id="newForm" class="form-control" method="POST">\
+      {% csrf_token %} \
+      <p class=text-muted>Reply</p>\
+      <select name="parent" class="d-none" id="id_parentt"> \
+      <option value="' + id + '" selected="' + id + '"></option>
+      </select>
+      <label for="id_comment">Reply</label> \
+      <textarea name="comment" cols="50" rows="1" class="form-control" required id="id_comment"></textarea> \
+      <button class="btn btn-sm btn-outline-primary" type="submit">Post</button>
+      </form>');
+    }
+
+
+    $('#myForm').trigger("reset");
+</script>
+{% endblock %}

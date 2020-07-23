@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block title %}Profile: {{user}}{% endblock %}
+{% block content %}
+
+
+<center>
+<div class="content-section">
+    <div class="media">
+        <center><img class="account-img rounded-circle " width="90px" height="100px" src="{{user.profile.profile_image.url}}"></center>
+        <div class="media-body">
+            <h2>{{user.profile.user}}</h2>
+            <div class="ml-2 bio" >
+                <h5><a href="#">email</a> <a href="#">call</a></h5>
+                location
+            </div>
+            {% if user.profile.link is None %}
+            <h3></h3>
+            {% else %}
+            <a href="{{user.profile.link}}"><h3>{{user.profile.link}}</h3></a>
+                {% endif %}
+        </div>
+    </div>
+</div>
+</center>
+{% for object in object %}
+      <div class="container">
+  <div class="row">
+    <div class="col-md-8 card mb-4  mt-3 left  top">
+      <div class="card-body">
+          {% if object.verified %}
+        <h3>{{ object.hustle_name }}  <img src="{% static 'images/verified.png' %}" width="5%"></h3>
+          {% else %}
+          <h1>{{ object.hustle_name }}</h1>
+          {% endif %}
+        <p class=" text-muted">@{{ object.user.username }} | {{ object.updated_on | timesince }} | <a href="{{object.category.get_absolute_url}}">{{object.category}}</a></p>
+        <p class="card-text ">{{ object.content | safe }}</p>
+                 {% if user.is_authenticated %}
+      {% if user == request.user %}
+          <div class="dropdown">
+  <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Settings
+  </button>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <a class="dropdown-item" href="{% url 'update' object.slug %}">Update</a>
+    <a class="dropdown-item" href="{% url 'delete' object.slug %}">Delete</a>
+  </div>
+</div>
+      {% endif %}
+      {% endif %}
+      </div>
+    </div>
+   </div>
+</div>
+{% endfor %}
+
+<! -- From Here -->
+ {% if user == request.user %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 mt-3 left">
+             <div class="card mb-4">
+                  <div class="card-body">
+<form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <fieldset>
+            <legend>Profile Info</legend>
+            {{ u_form | crispy }}
+            {{ p_form | crispy }}
+        </fieldset>
+
+        <div class="btn">
+             <button class="btn btn-success" type="submit">Update</button>
+        </div>
+
+    </form>
+                  </div>
+             </div>
+        </div>
+    </div>
+</div>
+    {% endif %}
+
+{% endblock %}

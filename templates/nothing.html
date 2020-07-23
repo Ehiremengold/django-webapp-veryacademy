@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% include "navbar.html" %}
+{% load static %}
+{% block title %}Nothing Found for: {{query}}{% endblock %}
+{% block content %}
+
+<img src="{% static 'images/nothing.png'%}">
+<p class="lead">No Results for: {{query}} </p>
+{% endblock %}

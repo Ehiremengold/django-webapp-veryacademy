@@ -1,0 +1,56 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-dark">
+    <a class="navbar-brand" href="/"><span style="color:white;"><b>myHustle &trade;</b></span></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+            <a class="nav-link" href="{% url 'create' %}"><span style="color:white;">Share hustle</span></a>
+      </li>
+
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'needskill' %}"><span style="color:white;">In Need Skill</span></a>
+      </li>
+        {% if user.is_authenticated %}
+
+        <li class="nav navbar-nav navbar-right">
+            <a class="nav-link" href="{% url 'profile' user.username %}"><span style="color:white;">Me</span></a>
+      </li>
+        {% endif %}
+      {% if user.is_authenticated %}
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'logout' %}"><span style="color:white;">Logout</span></a>
+      </li>
+      {% else %}
+       <li class="nav-item">
+            <a class="nav-link" href="{% url 'login' %}"><span style="color:white;">Login</span></a>
+      </li>
+      {% endif %}
+
+    </ul>
+      <script>
+          $(function() {
+            $("#q").autocomplete({
+              source: "{% url 'search_auto' %}",
+              select: function (event, ui) { //item selected
+                AutoCompleteSelectHandler(event, ui)
+              },
+              minLength: 1,
+            });
+          });
+
+          function AutoCompleteSelectHandler(event, ui)
+          {
+            var selectedObj = ui.item;
+          }
+      </script>
+    <form class="form-inline my-2 my-lg-0" action="{% url 'search' %}" method="GET">
+      <input id="q"  class="form-control mr-sm-2"  name="q" placeholder='Try "nanny", "tech" ' aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  </div>
+</nav>

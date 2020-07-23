@@ -1,0 +1,17 @@
+{% block sidebar %}
+
+<!-- Sidebar Widgets Column -->
+<div class="mycontent col-md-4 float-right ">
+<div class="card my-4">
+        <h5 class="card-header">Recent Hustles</h5>
+    <div class="card-body">
+        {% for post in hustleposts %}
+        <a href="{% url 'details' post.slug %}"><p class="card-text">{{post.hustle_name}}</p></a>
+        <small><p>{{post.content | truncatechars:90 }}</p></small>
+        <hr>
+        {% endfor %}
+
+    </div>
+</div>
+</div>
+{% endblock %}

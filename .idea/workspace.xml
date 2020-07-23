@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="bcd3c9a3-440d-4c4e-8c10-42860cecf84c" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectId" id="1cuYTwolbucTg7S4VFIQlISSBOO" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../backend" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\THINKPAD\Desktop\development\project\media" />
+      <recent name="C:\Users\THINKPAD\Desktop\development\project\media\profile_pics" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="0002_auto_20200624_1522" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="project" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/accounts/migrations" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/accounts/migrations/0002_auto_20200624_1522.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.0002_auto_20200624_1522" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="bcd3c9a3-440d-4c4e-8c10-42860cecf84c" name="Default Changelist" comment="" />
+      <created>1591379956547</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1591379956547</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="254" y="104" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1594927576215">
+      <screen x="0" y="0" width="1600" height="900" />
+    </state>
+    <state x="254" y="104" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1600.900@0.0.1600.900" timestamp="1594927576215" />
+    <state x="983" y="309" key="#com.intellij.featureStatistics.actions.ShowFeatureUsageStatisticsDialog" timestamp="1591716081928">
+      <screen x="0" y="0" width="1600" height="900" />
+    </state>
+    <state x="983" y="309" key="#com.intellij.featureStatistics.actions.ShowFeatureUsageStatisticsDialog/0.0.1600.900@0.0.1600.900" timestamp="1591716081928" />
+    <state x="931" y="115" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1594813660923">
+      <screen x="0" y="0" width="1600" height="900" />
+    </state>
+    <state x="931" y="115" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1600.900@0.0.1600.900" timestamp="1594813660923" />
+    <state x="580" y="204" key="FileChooserDialogImpl" timestamp="1595421837660">
+      <screen x="0" y="0" width="1600" height="900" />
+    </state>
+    <state x="580" y="204" key="FileChooserDialogImpl/0.0.1600.900@0.0.1600.900" timestamp="1595421837660" />
+    <state width="1579" height="235" key="GridCell.Tab.0.bottom" timestamp="1594927581020">
+      <screen x="0" y="0" width="1600" height="900" />
+    </state>
+    <state width="1579" height="235" key="GridCell.Tab.0.bottom/0.0.1600.900@0.0.1600.900" timestamp="1594927581020" />
+    <state width="1579" height="235" key="GridCell.Tab.0.center" timestamp="1594927581020">
+      <screen x="0" y="0" width="1600" height="900" />
+    </state>
+    <state width="1579" height="235" key="GridCell.Tab.0.center/0.0.1600.900@0.0.1600.900" timestamp="1594927581020" />
+    <state width="1579" height="235" key="GridCell.Tab.0.left" timestamp="1594927581020">
+      <screen x="0" y="0" width="1600" height="900" />
+    </state>
+    <state width="1579" height="235" key="GridCell.Tab.0.left/0.0.1600.900@0.0.1600.900" timestamp="1594927581020" />
+    <state width="1579" height="235" key="GridCell.Tab.0.right" timestamp="1594927581020">
+      <screen x="0" y="0" width="1600" height="900" />
+    </state>
+    <state width="1579" height="235" key="GridCell.Tab.0.right/0.0.1600.900@0.0.1600.900" timestamp="1594927581020" />
+    <state x="602" y="17" key="SettingsEditor" timestamp="1591380017992">
+      <screen x="0" y="0" width="1600" height="900" />
+    </state>
+    <state x="602" y="17" key="SettingsEditor/0.0.1600.900@0.0.1600.900" timestamp="1591380017992" />
+    <state x="92" y="92" width="1416" height="716" key="dock-window-1" timestamp="1595272528080">
+      <screen x="0" y="0" width="1600" height="900" />
+    </state>
+    <state x="92" y="92" width="1416" height="716" key="dock-window-1/0.0.1600.900@0.0.1600.900" timestamp="1595272528080" />
+    <state x="92" y="92" width="1416" height="716" key="dock-window-2" timestamp="1595272528081">
+      <screen x="0" y="0" width="1600" height="900" />
+    </state>
+    <state x="92" y="92" width="1416" height="716" key="dock-window-2/0.0.1600.900@0.0.1600.900" timestamp="1595272528081" />
+    <state x="717" y="216" width="672" height="678" key="search.everywhere.popup" timestamp="1595336695106">
+      <screen x="0" y="0" width="1600" height="900" />
+    </state>
+    <state x="717" y="216" width="672" height="678" key="search.everywhere.popup/0.0.1600.900@0.0.1600.900" timestamp="1595336695106" />
+  </component>
+</project>

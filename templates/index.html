@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}myHustle{% endblock %}
+{% block content %}
+
+<style>
+    body {
+        font-family: "Roboto", sans-serif;
+        font-size: 18px;
+        background-color: #fdfdfd;
+    }
+
+    .head_text {
+        color: white;
+    }
+
+    .card {
+        box-shadow: 0 16px 48px #E3E7EB;
+    }
+</style>
+
+
+<div class="container">
+    <div class="row">
+        <!-- Business Entries -->
+        <div class="col-md-8 mt-3 left">
+            {% for post in hustle_posts %}
+            <div class="card mb-4">
+                <div class="card-body">
+                    {% if post.verified %}
+                     <h4 class="card-title"><img class="img-thumbnail" width="70px" height="50px" src="{{post.user.profile.profile_image.url}}"> {{post.hustle_name}} <img src="{% static 'images/verified.png' %}" width="4%"></h4>
+                    {% else %}
+                     <h4 class="card-title"> <img class="rounded-circle article-img" width="70px" height="50px" src="{{post.user.profile.profile_image.url}}"> {{post.hustle_name}}</h4>
+                    {% endif %}
+
+                    <p class="card-text text-muted h6"><a href="{% url 'profile' post.user.username %}">@{{post.user.username}}</a> | {{post.updated_on | timesince }} ago | <a href="{{post.category.get_absolute_url}}">{{post.category}}</a>   | Travel: {{post.travel_availability}} | <img width="30px" src="{% static 'images/message.png' %}"></p>
+
+
+                    <p class="card-text">{{post.content | truncatechars:90}}</p>
+                    <div class="row gallery">
+                    {% for p in post.media.all %}
+                    <div class="col-md-3">
+                        <a href="{{p.file.url}}"><small>{{p.file.url}}</small></a>
+                    </div>
+                   {% endfor %}
+                    </div><br>
+                     <form action="." method="POST">
+                        {% csrf_token %}
+                            <button class="btn btn-sm btn-primary" type="submit" name="post_id" value="{{post.id}}">Like</button>
+                        </form>
+                    <a href="{% url 'details' post.slug %}"><img src="{% static 'images/more.png' %}"></a>
+                </div>
+            </div>
+            {% endfor %}
+
+        </div>
+
+        {% block sidebar %} {% include 'sidebar.html' %} {% endblock %}
+    </div>
+</div>
+{% endblock %}

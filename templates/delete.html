@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block content %}
+{% block title %}Delete Hustle: {{object.hustle_name}}{% endblock %}
+{% if user.is_authenticated %}
+{% if user.id == object.user.id %}
+<h1>Are you sure you want to delete this hustle?</h1>
+{% if object.verified %}
+<h4>{{object.hustle_name}} <img src="{% static 'images/verified.png' %}" width="2%"></h4>
+{% else %}
+<h4>{{object.hustle_name}}</h4>
+{% endif %}
+
+<div class="col-6 md-4" style="margin:80px; margin-top: 80px auto; width:700px">
+    <form method="POST">
+        {% csrf_token %}
+        <div class="btn">
+             <button class="btn btn-danger" type="submit">Yes, Delete</button>
+        </div>
+    </form>
+</div>
+{% else %}
+<h4>You are not allowed here! (and you know it)</h4>
+{% endif %}
+{% else %}
+<h4>You not Logged in, Login<a href="{% url 'login' %}">Here</a></h4>
+{% endif %}
+{% endblock %}

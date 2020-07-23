@@ -1,0 +1,45 @@
+ {% extends 'base.html' %}
+ {% load static %}
+{% block title %}Category: {{category}}{% endblock %}
+{% block content %}
+
+<style>
+    body {
+        font-family: "Roboto", sans-serif;
+        font-size: 18px;
+        background-color: #fdfdfd;
+    }
+
+    .head_text {
+        color: white;
+    }
+
+    .card {
+        box-shadow: 0 16px 48px #E3E7EB;
+    }
+</style>
+
+
+<div class="container">
+    <div class="row">
+        <!-- Business Entries -->
+        <div class="col-md-8 mt-3 left">
+            {% for post in hustle_posts %}
+            <div class="card mb-4">
+                <div class="card-body">
+                    {% if post.verified %}
+                    <h3 class="card-title">{{post.hustle_name}} <img src="{% static 'images/verified.png' %}" width="3%"></h3>
+                    {% else %}
+                    <h3 class="card-title">{{post.hustle_name}}</h3>
+                    {% endif %}
+                    <a href="{% url 'profile' post.user.username %}"><p class="card-text text-muted h6">@{{post.user.username}}</a> | {{post.updated_on | timesince }} | <a href="{{post.category.get_absolute_url}}">{{post.category}}</a> | Travel: {{post.travel_availability}} | <img width="30px" src="{% static 'images/message.png' %}"></p>
+                    <p class="card-text">{{post.content | truncatechars:90}}</p>
+                    <a href="{% url 'details' post.slug %}"><img src="{% static 'images/more.png' %}"></a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+    </div>
+</div>
+{% endblock %}

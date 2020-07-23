@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% include 'navbar.html' %}
+{% block title %}Search{% endblock %}
+{% load static %}
+{% block content %}
+
+{% if hustle %}
+<div class="row">
+    <div class="col-12 col-8 mx-auto">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-8 mt-3 left">
+               {% for b in hustle %}
+               <div class="card mb-4">
+                 <div class="card-body">
+                    {% if b.verified %}
+                    <h3 class="card-title">{{b.hustle_name}} <img src="{% static 'images/verified.png' %}" width="3%"></h3>
+                    {% else %}
+                     <h3 class="card-title">{{b.hustle_name}}</h3>
+                    {% endif %}
+                    <a href="{% url 'profile' b.user.username %}"><p class="card-text text-muted h6">@{{b.user.username}}</a> | {{b.updated_on | timesince }} ago | <a href="{{b.category.get_absolute_url}}">{{b.category}}</a> | Travel: {{post.travel_availability}} | <img width="30px" src="{% static 'images/message.png' %}"></p>
+                    <p class="card-text">{{b.content | truncatechars:90}}</p>
+                    <a href="{% url 'details' b.slug %}"><img src="{% static 'images/more.png' %}"></a>
+                 </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+        {% else %}
+         <center>
+             <div class="mt-3" style="width:500px; margin:0 auto;">
+                <h3>Nothing Matches your Search!<img src="{% static 'images/nothing.png' %}"></h3>
+
+                          <script>
+                  $(function() {
+                    $("#q").autocomplete({
+                      source: "{% url 'search_auto' %}",
+                      select: function (event, ui) { //item selected
+                        AutoCompleteSelectHandler(event, ui)
+                      },
+                      minLength: 1,
+                    });
+                  });
+
+                  function AutoCompleteSelectHandler(event, ui)
+                  {
+                    var selectedObj = ui.item;
+                  }
+              </script>
+                    <form class="form-inline my-2 my-lg-3" action="{% url 'search' %}" method="GET">
+                      <input id="q"  class="form-control mr-sm-2"  name="q" placeholder='Try "hair stylist", "music producer" ' aria-label="Search">
+                      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                    </form>
+                <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+                  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+                </div>
+        </center>
+{% endif %}
+    </div>
+</div>
+
+{% endblock %}

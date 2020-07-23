@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Update: {{object.hustle_name}}{% endblock %}
+{% block content %}
+{% load crispy_forms_tags %}
+
+
+{% if user.is_authenticated %}
+{% if user.id == object.user.id %}
+{% if object.verified %}
+<h1> {{object.hustle_name}}'s<img src="{% static 'images/verified.png' %}" width="2%"> hustle</h1>
+{% else %}
+<h4>{{object.hustle_name}}</h4>
+{% endif %}
+<div style="width:50%;">
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form | crispy }}
+        <div class="btn">
+             <button class="btn btn-success" type="submit">Update</button>
+        </div>
+    </form>
+</div>
+{% else %}
+{{ object.user.id }}
+<p>You are not the authenticated user for this page!</p>
+{% endif %}
+{% endif %}
+
+{% endblock %}
