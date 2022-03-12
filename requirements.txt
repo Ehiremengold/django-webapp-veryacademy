@@ -33,7 +33,7 @@ idna==2.7
 jmespath==0.9.4
 Markdown==3.2.2
 pathspec==0.5.9
-Pillow==7.0.0
+Pillow==9.0.1
 psycopg2==2.8.4
 Pygments==2.6.1
 pypiwin32==223
